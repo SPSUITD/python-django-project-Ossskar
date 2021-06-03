@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  margin: 0 auto;
+  background-color: #2a1f4c;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.text_1{
+  color: #fffbc2;
+  font-family: Verdana;
+}
+
+.text_2{
+  color: #25196b;
+  font-family: Verdana;
+  font-weight: Bold;
+}
+
+.text_3{
+  color: #fffbc2;
+  font-family: Verdana;
+  font-weight: Bold;
+}
+
+.input_box{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  display: inline-block;
+  background-color: #fffbc2;
+  border-radius: 4px;
+  border:0;
+  box-sizing: border-box;    
+}
+
+.box {
+  border: 2px solid #dedede;
+  background-color: #ffc66c;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.button{
+  width: 100%;
+  background-color: #2a1f4c;
+  color: white;
+  font-family: Verdana;
+  font-weight: Bold;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+}
+
+.button:hover{
+  background-color: #681db6;
+}
+
+</style>
+</head>
+<body>
+
+<h1 class="text_1">ВЧате</h1>
+
+<div class="box">
+    <form id="post-form" method="POST" action="checkview">
+        {% csrf_token %}
+        <label class="text_2">Название комнаты</label>
+        <input type="text" name="room_name" id="room_name" width="100px" placeholder="Напишите название существующего чата, чтобы перейти к нему или создайте новый..." class="input_box"/>
+        <label class="text_2">Имя</label>
+        <input type="text" name="username" id="username" width="100px" placeholder="Введите имя..." class="input_box" />
+        <input type="submit" value="Войти в комнату" class="button">
+    </form>    
+</div>
+
+<h4 class="text_1">Уже созданные чаты:</h4>
+{% for elements in roomname %}
+      <div class="text_3">
+        <span class="text_3">{{ elements.name }}</span>
+      </div>
+{% endfor %}
+
+</body>
+
+
+</html>
